@@ -1,17 +1,12 @@
-# Javascript-utility-methods
+# 'main' branch is dedicated to Javascript
 
-This Repo contains the custom method implementations for Javascript concepts
+# custom implementations for below Javascript topics including JS concepts like- closures, promises, polyfills abd event loop.
 
-# As of now, 'main' branch has custom implementations as per below description-
-
-Advanced JavaScript hands-on exercises including closures, promises, polyfills, debounce/throttle, event loop concepts
-
-Implement from scratch:
 • debounce
 • throttle
 • customPromiseAll
 • deepClone
 • flattenObject
-flattenArray
+  flattenArray
 • memoize
 • polyfills for map , filter and reduce
