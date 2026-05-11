@@ -36,21 +36,24 @@ const ProductGrid = ({ products }: Props) => {
   };
 
   return (
-    <div className="virtualized-wrapper">
-      <AutoSizer>
-        {({ width, height }) => (
-          <Grid
-            width={width}
-            height={height}
-            columnWidth={CARD_WIDTH}
-            columnCount={COLUMN_COUNT}
-            rowHeight={CARD_HEIGHT}
-            rowCount={rowCount}
-            cellRenderer={cellRenderer}
-          />
-        )}
-      </AutoSizer>
-    </div>
+    <>
+      <h1 className="header">Product List</h1>
+      <div className="virtualized-wrapper">
+        <AutoSizer>
+          {({ width, height }) => (
+            <Grid
+              width={width}
+              height={height}
+              columnWidth={CARD_WIDTH}
+              columnCount={COLUMN_COUNT}
+              rowHeight={CARD_HEIGHT}
+              rowCount={rowCount}
+              cellRenderer={cellRenderer}
+            />
+          )}
+        </AutoSizer>
+      </div>
+    </>
   );
 };
 

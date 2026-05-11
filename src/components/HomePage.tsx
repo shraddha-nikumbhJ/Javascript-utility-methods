@@ -1,13 +1,11 @@
-import ErrorBoundary from "./ErrorBoundry";
-// import ProductGrid from "./ProductGrid";
-import ProductGrid from "./ProductGridVirtualized";
 import products from "../data/products";
+import ErrorBoundary from "./ErrorBoundry";
+import ProductGrid from "./ProductGridVirtualized";
 
 export const HomePage = () => {
   return (
     <ErrorBoundary>
       <div>
-        <h1>Welcome to the Home Page</h1>
         <ProductGrid products={products} />
       </div>
     </ErrorBoundary>

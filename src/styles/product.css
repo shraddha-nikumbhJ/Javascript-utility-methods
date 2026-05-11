@@ -23,3 +23,16 @@
 .product-grid {
   padding: 20px;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 50%;
+  border: 2px solid #ccc;
+  font-size: 14px;
+  height: 20px;
+}

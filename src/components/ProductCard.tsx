@@ -1,14 +1,18 @@
 import React from "react";
 import { Product } from "../types/product";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   product: Product;
-  onClick: (product: Product) => void;
+  onClick?: (product: Product) => void;
 };
 
 const ProductCard = ({ product, onClick }: Props) => {
+  const navigate = useNavigate();
+
   const handleClick = () => {
-    onClick(product);
+    onClick?.(product);
+    navigate(`/product/${product.id}`);
   };
   return (
     <div className="product-card" onClick={handleClick}>
