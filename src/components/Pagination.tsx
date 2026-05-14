@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentPage } from "../slices/productDashboardSlice";
-import "../styles/product.css";
+import "../styles/main.scss";
 
 const Pagination = ({ total }: { total: number }) => {
   const dispatch = useDispatch();

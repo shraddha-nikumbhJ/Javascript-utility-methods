@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setSearch } from "../slices/productDashboardSlice";
-import "../styles/product.css";
+import "../styles/main.scss";
 
 const SearchProduct = () => {
   const dispatch = useDispatch();

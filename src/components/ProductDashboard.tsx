@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useGetProductsQuery } from "../store/productApi";
 import SearchProduct from "./searchProduct";
-import "../styles/product.css";
+import "../styles/main.scss";
 import Pagination from "./Pagination";
 
 const ProductDashboard = () => {

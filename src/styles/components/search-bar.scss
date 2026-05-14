@@ -1,0 +1,36 @@
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.search-bar {
+  width: 50%;
+
+  border: 2px solid $input-border;
+
+  font-size: 14px;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    border-color: #333;
+  }
+
+  @include laptop {
+    width: 70%;
+  }
+
+  @include tablet {
+    width: 90%;
+
+    font-size: 13px;
+  }
+
+  @include mobile {
+    width: 100%;
+  }
+}

@@ -1,5 +1,5 @@
 import ProductCard from "./ProductCard";
-import "../styles/product.css";
+import "../styles/main.scss";
 
 type Product = {
   id: string | number;
