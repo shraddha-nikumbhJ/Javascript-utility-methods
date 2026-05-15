@@ -14,6 +14,10 @@ const Pagination = ({ total }: { total: number }) => {
   const totalPages = Math.ceil(total / limit);
 
   const handlePageChange = (page: number) => {
+    if (page < 1 || page > totalPages) {
+      return;
+    }
+
     dispatch(setCurrentPage(page));
   };
 
@@ -32,20 +36,14 @@ const Pagination = ({ total }: { total: number }) => {
     visiblePages.push(i);
   }
 
-  const styles = {
-    paginationContainer: {
-      display: "flex",
-      gap: "10px",
-      marginTop: "20px",
-      justifyContent: "center",
-      alignItems: "center"
-    }
-  };
   return (
-    <div style={styles.paginationContainer}>
+    <nav className="pagination-container" aria-label="Pagination Navigation">
       <button
+        type="button"
         disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
+        aria-label="Go to previous page"
+        className="pagination-btn"
       >
         Prev
       </button>
@@ -53,22 +51,30 @@ const Pagination = ({ total }: { total: number }) => {
       {visiblePages.map((page) => (
         <button
           key={page}
+          type="button"
           onClick={() => handlePageChange(page)}
-          style={{
-            fontWeight: currentPage === page ? "bold" : "normal"
-          }}
+          aria-label={`Go to page ${page}`}
+          aria-current={currentPage === page ? "page" : undefined}
+          className={
+            currentPage === page
+              ? "pagination-btn active-page"
+              : "pagination-btn"
+          }
         >
           {page}
         </button>
       ))}
 
       <button
+        type="button"
         disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
+        aria-label="Go to next page"
+        className="pagination-btn"
       >
         Next
       </button>
-    </div>
+    </nav>
   );
 };
 

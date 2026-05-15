@@ -8,7 +8,7 @@ const ProductDashboard = () => {
   const { search, currentPage, limit } = useSelector(
     (state: any) => state.productDashboard
   );
-  const skip: number = (currentPage - 1) * limit;
+  const skip = (currentPage - 1) * limit;
   const { data, isLoading, error } = useGetProductsQuery({
     search,
     limit,
@@ -16,32 +16,60 @@ const ProductDashboard = () => {
   });
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return (
+      <div role="status" aria-live="polite" className="loading-state">
+        Loading products...
+      </div>
+    );
   }
 
   if (error) {
-    return <h2>Error fetching products</h2>;
+    return (
+      <div role="alert" className="error-state">
+        Error fetching products.
+      </div>
+    );
   }
 
   return (
-    <div>
-      <h1 className="header">Product Dashboard</h1>
-      <div className="header">
+    <main aria-labelledby="product-dashboard-heading">
+      <h1 id="product-dashboard-heading" className="header">
+        Product Dashboard
+      </h1>
+
+      <section className="header" aria-label="Search Products">
         <SearchProduct />
-      </div>
-      <div className="product-grid">
-        {data?.products?.map((product: any) => (
-          <div key={product.id} className="product-card">
-            <img src={product.images[0]} width="100" />
+      </section>
 
-            <h3>{product.title}</h3>
+      <section aria-label="Product Listing">
+        <div className="product-grid" role="list">
+          {data?.products?.map((product: any) => (
+            <article
+              key={product.id}
+              className="product-card"
+              role="listitem"
+              tabIndex={0}
+              aria-label={`Product ${product.title}`}
+            >
+              <img
+                src={product.images[0]}
+                alt={product.title}
+                loading="lazy"
+                width="100%"
+              />
 
-            <p>{product.price}</p>
-          </div>
-        ))}
-      </div>
+              <h2>{product.title}</h2>
+
+              <p aria-label={`Price ${product.price} dollars`}>
+                ${product.price}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <Pagination total={data?.total || 0} />
-    </div>
+    </main>
   );
 };
 

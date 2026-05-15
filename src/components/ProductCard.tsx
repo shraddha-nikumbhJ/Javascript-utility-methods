@@ -15,22 +15,44 @@ const ProductCard = ({ product, onClick }: Props) => {
     onClick?.(product);
     navigate(`/product/${product.id}`);
   };
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      handleClick();
+    }
+  };
+
   return (
-    <div className="product-card" onClick={handleClick}>
+    <article
+      className="product-card"
+      role="button"
+      tabIndex={0}
+      aria-label={`View details for ${product.title}`}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+    >
       <img
         src={product.image}
         alt={product.title}
         loading="lazy"
         srcSet={`
-                ${product.image}&w=200 200w,
-                ${product.image}&w=400 400w,
-                ${product.image}&w=800 800w
-              `}
-        sizes=" (max-width: 768px) 200px, (max-width: 1200px) 400px, 800px"
+          ${product.image}&w=200 200w,
+          ${product.image}&w=400 400w,
+          ${product.image}&w=800 800w
+        `}
+        sizes="
+          (max-width: 768px) 200px,
+          (max-width: 1200px) 400px,
+          800px
+        "
       />
       <h3>{product.title}</h3>
-      <p> ${product.price.toFixed(2)}</p>
-    </div>
+
+      <p aria-label={`Price ${product.price} dollars`}>
+        ${product.price.toFixed(2)}
+      </p>
+    </article>
   );
 };
 
