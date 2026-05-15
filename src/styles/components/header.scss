@@ -1,0 +1,11 @@
+@use "../abstracts/mixins" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mobile {
+    padding: 12px;
+  }
+}
