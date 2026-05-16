@@ -6,7 +6,9 @@ import Pagination from "./Pagination";
 
 const ProductDashboard = () => {
   const { search, currentPage, limit } = useSelector(
-    (state: any) => state.productDashboard
+    (state: {
+      productDashboard: { search: string; currentPage: number; limit: number };
+    }) => state.productDashboard
   );
   const skip = (currentPage - 1) * limit;
   const { data, isLoading, error } = useGetProductsQuery({
@@ -43,28 +45,35 @@ const ProductDashboard = () => {
 
       <section aria-label="Product Listing">
         <div className="product-grid" role="list">
-          {data?.products?.map((product: any) => (
-            <article
-              key={product.id}
-              className="product-card"
-              role="listitem"
-              tabIndex={0}
-              aria-label={`Product ${product.title}`}
-            >
-              <img
-                src={product.images[0]}
-                alt={product.title}
-                loading="lazy"
-                width="100%"
-              />
+          {data?.products?.map(
+            (product: {
+              id: number;
+              title: string;
+              price: number;
+              images: string[];
+            }) => (
+              <article
+                key={product.id}
+                className="product-card"
+                role="listitem"
+                tabIndex={0}
+                aria-label={`Product ${product.title}`}
+              >
+                <img
+                  src={product.images[0]}
+                  alt={product.title}
+                  loading="lazy"
+                  width="100%"
+                />
 
-              <h2>{product.title}</h2>
+                <h2>{product.title}</h2>
 
-              <p aria-label={`Price ${product.price} dollars`}>
-                ${product.price}
-              </p>
-            </article>
-          ))}
+                <p aria-label={`Price ${product.price} dollars`}>
+                  ${product.price}
+                </p>
+              </article>
+            )
+          )}
         </div>
       </section>
 

@@ -1,8 +1,6 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import SearchProduct from "./searchProduct";
-import { setSearch } from "../slices/productDashboardSlice";
-import { act } from "@testing-library/react";
 
 jest.mock("react-redux", () => ({
   useDispatch: jest.fn()
@@ -16,8 +14,6 @@ jest.mock("../slices/productDashboardSlice", () => ({
 }));
 
 describe("Search Product Component", () => {
-  const mockDispatch = jest.fn();
-
   test("verify search input is rendered", () => {
     render(<SearchProduct />);
 

@@ -6,10 +6,12 @@ import "../styles/main.scss";
 const Pagination = ({ total }: { total: number }) => {
   const dispatch = useDispatch();
 
-  const { currentPage, limit } = useSelector((state: any) => ({
-    currentPage: state.productDashboard.currentPage,
-    limit: state.productDashboard.limit
-  }));
+  const { currentPage, limit } = useSelector(
+    (state: { productDashboard: { currentPage: number; limit: number } }) => ({
+      currentPage: state.productDashboard.currentPage,
+      limit: state.productDashboard.limit
+    })
+  );
 
   const totalPages = Math.ceil(total / limit);
 

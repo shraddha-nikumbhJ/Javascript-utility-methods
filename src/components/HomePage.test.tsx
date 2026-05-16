@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { HomePage } from "./HomePage";
+import { Product } from "../types/product";
 
 jest.mock("../data/products", () => [
   {
@@ -20,7 +21,7 @@ jest.mock("../data/products", () => [
 jest.mock("./ProductGridVirtualized", () => ({
   __esModule: true,
 
-  default: ({ products }: any) => (
+  default: ({ products }: { products: Product[] }) => (
     <div data-testid="product-grid">
       Product Grid
       {products.length}
@@ -31,7 +32,7 @@ jest.mock("./ProductGridVirtualized", () => ({
 jest.mock("./ErrorBoundry", () => ({
   __esModule: true,
 
-  default: ({ children }: any) => (
+  default: ({ children }: { children: React.ReactNode }) => (
     <div data-testid="error-boundary">{children}</div>
   )
 }));

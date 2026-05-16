@@ -3,13 +3,30 @@ import "@testing-library/jest-dom";
 import ProductGrid from "./ProductGridVirtualized";
 
 jest.mock("react-virtualized", () => ({
-  AutoSizer: ({ children }: any) =>
+  AutoSizer: ({
+    children
+  }: {
+    children: (size: { width: number; height: number }) => React.ReactNode;
+  }) =>
     children({
       width: 1200,
       height: 800
     }),
 
-  Grid: ({ cellRenderer, columnCount, rowCount }: any) => {
+  Grid: ({
+    cellRenderer,
+    columnCount,
+    rowCount
+  }: {
+    cellRenderer: (params: {
+      columnIndex: number;
+      rowIndex: number;
+      key: string;
+      style: React.CSSProperties;
+    }) => React.ReactNode;
+    columnCount: number;
+    rowCount: number;
+  }) => {
     const cells = [];
 
     for (let rowIndex = 0; rowIndex < rowCount; rowIndex++) {
@@ -32,7 +49,7 @@ jest.mock("react-virtualized", () => ({
 jest.mock("./ProductCard", () => ({
   __esModule: true,
 
-  default: ({ product }: any) => (
+  default: ({ product }: { product: { title: string } }) => (
     <div data-testid="product-card">{product.title}</div>
   )
 }));

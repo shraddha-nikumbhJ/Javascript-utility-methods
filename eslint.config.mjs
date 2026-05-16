@@ -8,7 +8,7 @@ import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
   js.configs.recommended,
-
+  eslintConfigPrettier,
   ...tseslint.configs.recommended,
 
   {
@@ -55,5 +55,8 @@ export default [
     rules: {
       "@typescript-eslint/no-require-imports": "off"
     }
+  },
+  {
+    ignores: ["dist", "node_modules", "jest.config.cjs"]
   }
 ];

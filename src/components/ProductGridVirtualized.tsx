@@ -32,7 +32,13 @@ const ProductGrid = ({ products }: Props) => {
     rowIndex,
     style,
     columnCount
-  }: any) => {
+  }: {
+    columnIndex: number;
+    key: string;
+    rowIndex: number;
+    style: React.CSSProperties;
+    columnCount: number;
+  }) => {
     const productIndex = rowIndex * columnCount + columnIndex;
 
     const product = products[productIndex];

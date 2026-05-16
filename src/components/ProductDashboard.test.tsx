@@ -22,7 +22,7 @@ jest.mock("./searchProduct", () => () => (
 jest.mock("./Pagination", () => ({
   __esModule: true,
 
-  default: ({ total }: any) => (
+  default: ({ total }: { total: number }) => (
     <div data-testid="pagination">Pagination {total}</div>
   )
 }));

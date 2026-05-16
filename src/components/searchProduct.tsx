@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../slices/productDashboardSlice";
 import "../styles/main.scss";
@@ -6,9 +5,12 @@ import "../styles/main.scss";
 const SearchProduct = () => {
   const dispatch = useDispatch();
 
-  function customDebounce(callback: Function, delay: number) {
+  function customDebounce<T extends unknown[]>(
+    callback: (...args: T) => void,
+    delay: number
+  ): (...args: T) => void {
     let timer: NodeJS.Timeout;
-    return (...args: any[]) => {
+    return (...args: T) => {
       clearTimeout(timer);
       timer = setTimeout(() => {
         callback(...args);
@@ -20,7 +22,7 @@ const SearchProduct = () => {
     dispatch(setSearch(value));
   };
 
-  const debouncedSearch = useMemo(() => customDebounce(handleSearch, 1000), []);
+  const debouncedSearch = customDebounce(handleSearch, 1000);
 
   return (
     <div className="search-container">
