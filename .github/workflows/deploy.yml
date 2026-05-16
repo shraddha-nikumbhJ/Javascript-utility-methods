@@ -1,31 +1,40 @@
-name: CI Pipeline
+name: CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - vite-app
+push:
+branches:
+  - vite-app
 
 jobs:
-  build-test:
-    runs-on: windows-latest
+build-test-deploy:
+runs-on: windows-latest
 
-    steps:
-      - name: Downloading Project Code
-        uses: actions/checkout@v4
+steps:
+  - name: Downloading Project Code
+    uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: 24
 
-      - name: Install Dependencies
-        run: npm install
+  - name: Install Dependencies
+    run: npm install
 
-      - name: Run Lint
-        run: npm run lint
+  - name: Run Lint
+    run: npm run lint
 
-      - name: Run Tests
-        run: npm test -- --watch=false
+  - name: Run Tests
+    run: npm test -- --watch=false
 
-      - name: Build Application
-        run: npm run build
+  - name: Build Application
+    run: npm run build
+
+  - name: Install Vercel CLI
+    run: npm install --global vercel
+
+  - name: Deploy to Vercel
+    run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
