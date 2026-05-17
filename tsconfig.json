@@ -7,7 +7,8 @@
     "esModuleInterop": true,
     "moduleResolution": "bundler",
     "skipLibCheck": true,
-    "allowJs": true
+    "allowJs": true,
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["src"]
 }

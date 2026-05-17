@@ -1,84 +1,101 @@
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import { HomePage } from "./HomePage";
-import { Product } from "../types/product";
 
-jest.mock("../data/products", () => [
-  {
-    id: 1,
-    title: "Phone",
-    price: 1000,
-    image: "img1"
-  },
-  {
-    id: 2,
-    title: "Laptop",
-    price: 2000,
-    image: "img2"
-  }
-]);
-
-jest.mock("./ProductGridVirtualized", () => ({
-  __esModule: true,
-
-  default: ({ products }: { products: Product[] }) => (
-    <div data-testid="product-grid">
-      Product Grid
-      {products.length}
-    </div>
-  )
-}));
-
-jest.mock("./ErrorBoundry", () => ({
-  __esModule: true,
-
-  default: ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="error-boundary">{children}</div>
-  )
+jest.mock("react-router-dom", () => ({
+  useNavigate: jest.fn()
 }));
 
 describe("HomePage Component", () => {
-  afterEach(() => {
+  beforeEach(() => {
     jest.clearAllMocks();
   });
 
-  test("renders HomePage component", () => {
-    render(<HomePage />);
+  const renderComponent = () => {
+    render(
+      // <MemoryRouter>
+      <HomePage />
+      // </MemoryRouter>
+    );
+  };
+
+  test("renders homepage main section", () => {
+    renderComponent();
     expect(screen.getByRole("main")).toBeInTheDocument();
   });
 
-  test("renders product listing heading", () => {
-    render(<HomePage />);
+  test("renders hero heading", () => {
+    renderComponent();
 
     expect(
-      screen.getByRole("heading", { name: /product listing/i })
+      screen.getByRole("heading", { name: /modern react product platform/i })
     ).toBeInTheDocument();
   });
 
-  test("renders ProductGrid component", () => {
-    render(<HomePage />);
-    expect(screen.getByTestId("product-grid")).toBeInTheDocument();
-  });
-
-  test("wraps content inside ErrorBoundary", () => {
-    render(<HomePage />);
-
-    expect(screen.getByTestId("error-boundary")).toBeInTheDocument();
-  });
-
-  test("renders accessible main landmark", () => {
-    render(<HomePage />);
+  test("renders Open Dashboard button", () => {
+    renderComponent();
 
     expect(
-      screen.getByRole("main", { name: /product listing page/i })
+      screen.getByRole("button", { name: /open dashboard/i })
     ).toBeInTheDocument();
   });
 
-  test("renders products section", () => {
-    render(<HomePage />);
+  test("renders Project Features section", () => {
+    renderComponent();
 
     expect(
-      screen.getByRole("region", { name: /product listing/i })
+      screen.getByRole("heading", { name: /project features/i })
     ).toBeInTheDocument();
+  });
+
+  test("renders Product Listing feature card", () => {
+    renderComponent();
+
+    expect(
+      screen.getByText(/responsive virtualized product listing/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders Product Dashboard feature card", () => {
+    renderComponent();
+
+    expect(
+      screen.getByText(/search, pagination, accessibility/i)
+    ).toBeInTheDocument();
+  });
+
+  test("renders Technology Stack section", () => {
+    renderComponent();
+
+    expect(
+      screen.getByRole("heading", { name: /technology stack/i })
+    ).toBeInTheDocument();
+  });
+
+  test("renders technology badges", () => {
+    renderComponent();
+
+    expect(screen.getByText("React 19")).toBeInTheDocument();
+
+    expect(screen.getByText("TypeScript")).toBeInTheDocument();
+
+    expect(screen.getByText("Vite")).toBeInTheDocument();
+
+    expect(screen.getByText("Redux Toolkit")).toBeInTheDocument();
+  });
+
+  test("renders footer text", () => {
+    renderComponent();
+
+    expect(
+      screen.getByText(/built using modern react frontend architecture/i)
+    ).toBeInTheDocument();
+  });
+
+  test("homepage is accessible via main landmark", () => {
+    renderComponent();
+
+    const main = screen.getByRole("main");
+
+    expect(main).toBeInTheDocument();
   });
 });

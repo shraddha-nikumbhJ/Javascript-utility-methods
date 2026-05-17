@@ -9,7 +9,7 @@ const SearchProduct = () => {
     callback: (...args: T) => void,
     delay: number
   ): (...args: T) => void {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setTimeout>;
     return (...args: T) => {
       clearTimeout(timer);
       timer = setTimeout(() => {

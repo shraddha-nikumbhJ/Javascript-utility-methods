@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import ProductGrid from "./ProductGridVirtualized";
 
@@ -85,44 +85,62 @@ describe("ProductGrid Component", () => {
     }
   ];
 
-  test("verify ProductGrid component is rendered", () => {
-    render(<ProductGrid products={mockProducts} />);
+  test("verify ProductGrid component is rendered", async () => {
+    await act(async () => {
+      render(<ProductGrid products={mockProducts} />);
+    });
 
     expect(screen.getByTestId("grid")).toBeInTheDocument();
   });
 
-  test("verify all products are rendered", () => {
-    render(<ProductGrid products={mockProducts} />);
+  test("verify all products are rendered", async () => {
+    await act(async () => {
+      render(<ProductGrid products={mockProducts} />);
+    });
 
     const cards = screen.getAllByTestId("product-card");
 
     expect(cards.length).toBe(4);
   });
 
-  test("verify correct product titles are rendered", () => {
-    render(<ProductGrid products={mockProducts} />);
+  test("verify correct product titles are rendered", async () => {
+    await act(async () => {
+      render(<ProductGrid products={mockProducts} />);
+    });
 
     expect(screen.getByText("Phone")).toBeInTheDocument();
 
     expect(screen.getByText("Laptop")).toBeInTheDocument();
   });
 
-  test("verify no cards are rendered when products array is empty", () => {
-    render(<ProductGrid products={[]} />);
+  test("verify no cards are rendered when products array is empty", async () => {
+    await act(async () => {
+      render(<ProductGrid products={[]} />);
+    });
 
     const cards = screen.queryAllByTestId("product-card");
 
     expect(cards.length).toBe(0);
   });
 
-  test("verify virtualized wrapper exists", () => {
-    const { container } = render(<ProductGrid products={mockProducts} />);
+  test("verify virtualized wrapper exists", async () => {
+    let container: HTMLElement;
 
-    expect(container.querySelector(".virtualized-wrapper")).toBeInTheDocument();
+    await act(async () => {
+      const rendered = render(<ProductGrid products={mockProducts} />);
+
+      container = rendered.container;
+    });
+
+    expect(
+      container!.querySelector(".virtualized-wrapper")
+    ).toBeInTheDocument();
   });
 
   test("verify lazy loaded ProductCard is rendered", async () => {
-    render(<ProductGrid products={mockProducts} />);
+    await act(async () => {
+      render(<ProductGrid products={mockProducts} />);
+    });
 
     expect(await screen.findByText("Phone")).toBeInTheDocument();
   });
