@@ -3,27 +3,18 @@
 
 .product-card {
   background: $card-bg;
-
   padding: 15px;
-
   border: 2px solid $primary-border;
-
   border-radius: $border-radius;
-
   transition: transform $transition-speed ease;
-
   width: 100%;
-
   box-sizing: border-box;
   height: 100%;
 
   img {
     width: 100%;
-
     height: 220px;
-
     object-fit: cover;
-
     border-radius: 8px;
   }
 

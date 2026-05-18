@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import { useGetProductsQuery } from "../store/productApi";
-import SearchProduct from "./searchProduct";
-import "../styles/main.scss";
-import Pagination from "./Pagination";
+import { useGetProductsQuery } from "./api/products";
+import SearchProduct from "../../shared/searchProduct";
+import "../../styles/main.scss";
+import Pagination from "../../shared/Pagination";
+import { Loading } from "../../shared/Loading";
 
 const ProductDashboard = () => {
   const { search, currentPage, limit } = useSelector(
@@ -18,11 +19,7 @@ const ProductDashboard = () => {
   });
 
   if (isLoading) {
-    return (
-      <div role="status" aria-live="polite" className="loading-state">
-        Loading products...
-      </div>
-    );
+    return <Loading />;
   }
 
   if (error) {

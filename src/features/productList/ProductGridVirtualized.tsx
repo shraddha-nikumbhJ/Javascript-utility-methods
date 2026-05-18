@@ -1,7 +1,7 @@
 import { Grid, AutoSizer } from "react-virtualized";
 import { lazy, Suspense, useCallback } from "react";
-import "../styles/main.scss";
-import { Product } from "../types/product";
+import "../../styles/main.scss";
+import { Product } from "../../types/product";
 const ProductCard = lazy(() => import("./ProductCard"));
 
 type Props = {
@@ -66,6 +66,9 @@ const ProductGrid = ({ products }: Props) => {
       className="virtualized-wrapper"
       style={{ width: "100%", height: "100vh" }}
     >
+      <h1 id="product-list-heading" className="header">
+        Product List
+      </h1>
       <AutoSizer>
         {({ width, height }) => {
           const columnCount = getColumnCount(width);

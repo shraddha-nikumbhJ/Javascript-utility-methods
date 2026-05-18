@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage } from "../slices/productDashboardSlice";
+import { setCurrentPage } from "../features/dashboard/slices/productDashboardSlice";
 import "../styles/main.scss";
 
 const Pagination = ({ total }: { total: number }) => {

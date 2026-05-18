@@ -6,7 +6,7 @@ jest.mock("react-redux", () => ({
   useDispatch: jest.fn()
 }));
 
-jest.mock("../slices/productDashboardSlice", () => ({
+jest.mock("../features/dashboard/slices/productDashboardSlice", () => ({
   setSearch: jest.fn((payload) => ({
     type: "setSearch",
     payload

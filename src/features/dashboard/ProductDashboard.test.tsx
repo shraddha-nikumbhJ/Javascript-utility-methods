@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import ProductDashboard from "./ProductDashboard";
+import ProductDashboard from "../dashboard/ProductDashboard";
 import { useSelector } from "react-redux";
-import { useGetProductsQuery } from "../store/productApi";
+import { useGetProductsQuery } from "./api/products";
 
 // MOCK REDUX
 jest.mock("react-redux", () => ({
@@ -10,16 +10,16 @@ jest.mock("react-redux", () => ({
 }));
 
 // MOCK RTK QUERY
-jest.mock("../store/productApi", () => ({
+jest.mock("./api/products", () => ({
   useGetProductsQuery: jest.fn()
 }));
 
 // MOCK CHILD COMPONENTS
-jest.mock("./searchProduct", () => () => (
+jest.mock("../../shared/searchProduct", () => () => (
   <div data-testid="search-product">Search Product</div>
 ));
 
-jest.mock("./Pagination", () => ({
+jest.mock("../../shared/Pagination", () => ({
   __esModule: true,
 
   default: ({ total }: { total: number }) => (
@@ -53,7 +53,7 @@ describe("ProductDashboard Component", () => {
 
     render(<ProductDashboard />);
 
-    expect(screen.getByRole("status")).toHaveTextContent(/loading products/i);
+    expect(screen.getByRole("status")).toHaveTextContent(/loading/i);
   });
 
   test("renders error state", () => {

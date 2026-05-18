@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setSearch } from "../slices/productDashboardSlice";
+import { setSearch } from "../features/dashboard/slices/productDashboardSlice";
 import "../styles/main.scss";
 
 const SearchProduct = () => {

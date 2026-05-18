@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Pagination from "./Pagination";
+import Pagination from "../shared/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentPage } from "../slices/productDashboardSlice";
+import { setCurrentPage } from "../features/dashboard/slices/productDashboardSlice";
 
 // MOCK REDUX
 jest.mock("react-redux", () => ({
@@ -11,7 +11,7 @@ jest.mock("react-redux", () => ({
 }));
 
 // MOCK ACTION
-jest.mock("../slices/productDashboardSlice", () => ({
+jest.mock("../features/dashboard/slices/productDashboardSlice", () => ({
   setCurrentPage: jest.fn((payload) => ({
     type: "setCurrentPage",
     payload

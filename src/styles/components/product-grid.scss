@@ -3,30 +3,21 @@
 
 .product-grid {
   display: grid;
-
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
   gap: 20px;
-
   padding: 20px;
-
   width: 100%;
-
   box-sizing: border-box;
 
   @include laptop {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-
     gap: 16px;
-
     padding: 16px;
   }
 
   @include tablet {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-
     gap: 12px;
-
     padding: 12px;
   }
 

@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
-import { HomePage } from "./components/HomePage";
-import ProductDetails from "./components/ProductDetails";
-import ProductDashboard from "./components/ProductDashboard";
-import ProductGrid from "./components/ProductGridVirtualized";
-import products from "./data/products";
+import { HomePage } from "./features/HomePage";
+import ProductDetails from "./features/productList/ProductDetails";
+import ProductDashboard from "./features/dashboard/ProductDashboard";
+import ProductGrid from "./features/productList/ProductGridVirtualized";
+import products from "./features/productList/api/products";
 
 export const App = () => {
   return (

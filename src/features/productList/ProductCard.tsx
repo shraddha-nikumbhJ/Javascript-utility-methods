@@ -1,7 +1,7 @@
 import React from "react";
-import { Product } from "../types/product";
+import { Product } from "../../types/product";
 import { useNavigate } from "react-router-dom";
-import "../styles/main.scss";
+import "../../styles/main.scss";
 
 type Props = {
   product: Product;
