@@ -71,7 +71,7 @@ describe("ProductCard Component", () => {
 
     const card = screen.getByRole("button");
     fireEvent.click(card);
-    expect(mockNavigate).toHaveBeenCalledWith("/product/1");
+    expect(mockNavigate).toHaveBeenCalledWith("/products/1");
   });
 
   test("handles Enter key press", () => {
@@ -82,7 +82,7 @@ describe("ProductCard Component", () => {
       key: "Enter"
     });
     expect(mockOnClick).toHaveBeenCalledWith(mockProduct);
-    expect(mockNavigate).toHaveBeenCalledWith("/product/1");
+    expect(mockNavigate).toHaveBeenCalledWith("/products/1");
   });
 
   test("handles Space key press", () => {
@@ -96,7 +96,7 @@ describe("ProductCard Component", () => {
 
     expect(mockOnClick).toHaveBeenCalledWith(mockProduct);
 
-    expect(mockNavigate).toHaveBeenCalledWith("/product/1");
+    expect(mockNavigate).toHaveBeenCalledWith("/products/1");
   });
 
   test("renders image with lazy loading", () => {
