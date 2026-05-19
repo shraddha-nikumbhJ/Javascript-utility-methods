@@ -13,7 +13,7 @@ const ProductCard = ({ product, onClick }: Props) => {
 
   const handleClick = () => {
     onClick?.(product);
-    navigate(`/product/${product.id}`);
+    navigate(`/products/${product.id}`);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
