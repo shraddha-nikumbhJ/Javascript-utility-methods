@@ -6,7 +6,7 @@ console.log("API Base URL:", BASE_URL);
 export const productApi = createApi({
   reducerPath: "productApi",
 
-  baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
+  baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
 
   endpoints: (builder) => ({
     getProducts: builder.query({
