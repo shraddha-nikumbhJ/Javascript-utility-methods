@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Shraddha's Portfolio
 
-## Getting Started
+A modern, responsive developer portfolio built with **Next.js, TypeScript, Tailwind CSS, and the Next.js App Router**.
 
-First, run the development server:
+The portfolio showcases my frontend development experience, technical skills, professional projects, and a Next.js learning project. It is designed with a clean, modern UI and optimized for responsive experiences across desktop, tablet, and mobile devices.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ⚡ Next.js Concepts Demonstrated - 
+App Router
+Server Components
+Client Components
+Dynamic Routing
+Image Optimization
+MetaData & SEO
+Component Architecture
+Responsive Design
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This portfolio was created to present my professional experience as a frontend developer while also demonstrating my understanding of modern **Next.js development and frontend architecture**.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+It includes:
 
-## Learn More
+- Professional introduction
+- About section
+- Technical skills
+- Professional projects
+- Work experience
+- Next.js learning project
+- Contact section
+- Individual project detail pages
+- Responsive navigation
+- Responsive layouts
+- Modern UI interactions
+- SEO-friendly metadata
+- Reusable React components
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 🏠 Hero Section
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The landing section provides a quick introduction and highlights.
 
-## Deploy on Vercel
+### 👨‍💻 About Section
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The About section provides an overview of my professional background and development approach.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🛠️ Skills Section
+
+Technical skills are organized into relevant categories to make them easy to explore.
+
+## 💼 Projects
+
+The portfolio showcases projects from different domains and technologies.
